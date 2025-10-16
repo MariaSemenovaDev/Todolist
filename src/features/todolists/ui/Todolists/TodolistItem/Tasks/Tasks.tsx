@@ -4,7 +4,6 @@ import type { DomainTodolist } from "@/features/todolists/lib/types"
 import List from "@mui/material/List"
 import { TaskItem } from "./TaskItem/TaskItem"
 import { TasksSkeleton } from "./TasksSkeleton/TasksSkeleton"
-import { PAGE_SIZE } from "@/common/constants"
 import { useState } from "react"
 import {
   TasksPagination
@@ -19,7 +18,7 @@ export const Tasks = ({ todolist }: Props) => {
 
   const [page, setPage] = useState(1)
 
-  const { data, isLoading, isFetching  } = useGetTasksQuery({
+  const { data, isLoading  } = useGetTasksQuery({
     todolistId: id,
     params: { page },
   })

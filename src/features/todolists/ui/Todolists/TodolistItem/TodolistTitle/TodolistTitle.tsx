@@ -1,6 +1,5 @@
 import { EditableSpan } from "@/common/components"
 import { useAppDispatch } from "@/common/hooks"
-import type { RequestStatus } from "@/common/types"
 import {
   todolistsApi,
   useRemoveTodolistMutation,
@@ -23,16 +22,6 @@ export const TodolistTitle = ({ todolist }: Props) => {
 
   const dispatch = useAppDispatch()
 
-  const changeTodolistStatus = (entityStatus: RequestStatus) => {
-    dispatch(
-      todolistsApi.util.updateQueryData("getTodolists", undefined, (state) => {
-        const todolist = state.find((todolist) => todolist.id === id)
-        if (todolist) {
-          todolist.entityStatus = entityStatus
-        }
-      }),
-    )
-  }
 
   const deleteTodolist = async () => {
     const patchResult = dispatch(
